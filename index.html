@@ -179,6 +179,44 @@
         -webkit-font-smoothing: antialiased;
       }
 
+      body.reveal-ready .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 700ms ease, transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      body.reveal-ready .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      body.reveal-ready .reveal-stagger > * {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 600ms ease, transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      body.reveal-ready .reveal-stagger.is-visible > * {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      body.reveal-ready .reveal-stagger.is-visible > :nth-child(2) {
+        transition-delay: 80ms;
+      }
+
+      body.reveal-ready .reveal-stagger.is-visible > :nth-child(3) {
+        transition-delay: 160ms;
+      }
+
+      body.reveal-ready .reveal-stagger.is-visible > :nth-child(4) {
+        transition-delay: 240ms;
+      }
+
+      body.reveal-ready .reveal-stagger.is-visible > :nth-child(5) {
+        transition-delay: 320ms;
+      }
+
       a {
         color: inherit;
       }
@@ -635,6 +673,33 @@
       .button-secondary:focus-visible {
         border-color: var(--cyan);
         background: rgba(141, 221, 236, 0.14);
+      }
+
+      .quick-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 26px;
+      }
+
+      .stat-card {
+        padding: 14px 16px;
+        border: 1px solid rgba(141, 221, 236, 0.16);
+        border-radius: 14px;
+        background: rgba(10, 25, 38, 0.7);
+      }
+
+      .stat-card strong {
+        display: block;
+        color: var(--text);
+        font-size: 0.96rem;
+      }
+
+      .stat-card span {
+        display: block;
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: 0.76rem;
       }
 
       .hero-note {
@@ -1404,6 +1469,10 @@
           width: 100%;
         }
 
+        .quick-stats {
+          grid-template-columns: 1fr;
+        }
+
         .content-section {
           padding: 70px 0;
         }
@@ -1467,6 +1536,12 @@
         *::before,
         *::after {
           transition-duration: 0.01ms !important;
+        }
+
+        body.reveal-ready .reveal,
+        body.reveal-ready .reveal-stagger > * {
+          opacity: 1;
+          transform: none;
         }
       }
     </style>
@@ -1574,6 +1649,20 @@
               rel="noopener noreferrer"
             >Explore TNC Batches</a>
           </div>
+          <div class="quick-stats" aria-label="Quick benefit summary">
+            <div class="stat-card">
+              <strong>1-click access</strong>
+              <span>Jump straight into tests or batches</span>
+            </div>
+            <div class="stat-card">
+              <strong>Patna-focused</strong>
+              <span>Built for local nursing prep searches</span>
+            </div>
+            <div class="stat-card">
+              <strong>Verified links</strong>
+              <span>Official destinations with current updates</span>
+            </div>
+          </div>
           <p class="hero-note">Check the linked destination for current availability and access terms.</p>
         </section>
 
@@ -1623,7 +1712,7 @@
       </main>
     </div>
 
-    <section class="feature-band" aria-label="TNC Nursing highlights">
+    <section class="feature-band reveal" aria-label="TNC Nursing highlights">
       <div class="shell feature-items">
         <div class="feature-item"><span class="feature-mark">01</span>Patna-focused nursing resources</div>
         <div class="feature-item"><span class="feature-mark">02</span>Practice-first study flow</div>
@@ -1631,7 +1720,7 @@
       </div>
     </section>
 
-    <section id="why-tnc" class="content-section" aria-labelledby="why-title">
+    <section id="why-tnc" class="content-section reveal" aria-labelledby="why-title">
       <div class="shell">
         <div class="section-heading">
           <div>
@@ -1643,7 +1732,7 @@
             practice and performance feedback for students preparing for nursing competitive exams.
           </p>
         </div>
-        <div class="why-grid">
+        <div class="why-grid reveal-stagger">
           <article class="why-card">
             <span class="why-icon" aria-hidden="true">👩‍⚕️</span>
             <h3>Expert Faculty</h3>
@@ -1670,7 +1759,7 @@
             <p>Use regular tests, reports and mentoring to understand progress and stay on track.</p>
           </article>
         </div>
-        <div class="topic-grid" aria-label="TNC Nursing study resources">
+        <div class="topic-grid reveal-stagger" aria-label="TNC Nursing study resources">
           <article class="topic-card">
             <span class="topic-icon">T</span>
             <h3>TNC test series</h3>
@@ -1700,7 +1789,7 @@
       </div>
     </section>
 
-    <section class="content-section alt" aria-labelledby="search-title">
+    <section class="content-section alt reveal" aria-labelledby="search-title">
       <div class="shell intent-grid">
         <div class="intent-copy">
           <p class="section-kicker">For TNC nursing students</p>
@@ -1722,7 +1811,7 @@
             <span class="keyword">Nursing preparation</span>
           </div>
         </div>
-        <div class="quick-links" aria-label="Quick access">
+        <div class="quick-links reveal-stagger" aria-label="Quick access">
           <a class="quick-link" href="https://test.tncnursing.site/" target="_blank" rel="noopener noreferrer">
             <strong>Take a TNC practice test</strong>
             <span>Open the test series destination ↗</span>
@@ -1735,7 +1824,7 @@
       </div>
     </section>
 
-    <section id="faq" class="content-section" aria-labelledby="faq-title">
+    <section id="faq" class="content-section reveal" aria-labelledby="faq-title">
       <div class="shell">
         <div class="section-heading">
           <div>
@@ -1744,7 +1833,7 @@
           </div>
           <p>Use the official destination links above for the latest availability, terms, and updates.</p>
         </div>
-        <div class="faq-list">
+        <div class="faq-list reveal-stagger">
           <details>
             <summary>Where can I find the TNC test series?</summary>
             <p>Use the TNC Test Series button on this page to open the current test series link.</p>
@@ -1769,7 +1858,7 @@
       </div>
     </section>
 
-    <section id="access" class="closing-cta" aria-labelledby="access-title">
+    <section id="access" class="closing-cta reveal" aria-labelledby="access-title">
       <div class="shell closing-inner">
         <div>
           <h2 id="access-title">Ready to choose your next step?</h2>
@@ -1814,6 +1903,25 @@
 
     <script>
       (() => {
+        const revealElements = [...document.querySelectorAll(".reveal, .reveal-stagger")];
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        document.body.classList.add("reveal-ready");
+
+        if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+          revealElements.forEach((element) => element.classList.add("is-visible"));
+        } else {
+          const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            });
+          }, { threshold: 0.14, rootMargin: "0px 0px -48px" });
+
+          revealElements.forEach((element) => revealObserver.observe(element));
+        }
+
         const storageKey = "tncCommunityPromptV3";
         const cooldownMs = 48 * 60 * 60 * 1000;
         const modal = document.getElementById("community-modal");
